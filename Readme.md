@@ -35,5 +35,7 @@ Initialize filter and import library
 > import geomstats.backend as gs
 > import geomstats.visualization as visualization
 > from geomstats.geometry.hypersphere import Hypersphere
+> 
+> from geomstats.geometry.hypersphere import Hypersphere
 > from geomstats.geometry.hyperbolic import Hyperbolic
 > from geomstats.geometry.hyperboloid import Hyperboloid
