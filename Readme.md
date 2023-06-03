@@ -8,3 +8,13 @@ By employing this manifold constraint, the authors argue that they are offering 
 
 In essence, by adopting this manifold constraint, the paper offers a broader perspective on constraining filter coefficients, which could potentially lead to improved adaptive filtering techniques with enhanced performance and adaptability to various applications.
 
+The proposed algorithm aims to find a point on the sphere that minimizes the Least Mean Square (LMS) criterion. To ensure that the algorithm remains within the surface of the manifold, the exponential map is utilized at each step of the optimization process. This technique allows the algorithm to navigate along the manifold's surface, as depicted in the accompanying figure.
+
+
+![pointMgeo](https://github.com/SofiaBlnchrd/AdaptiveFiltering/assets/135394093/416e8d73-ebf1-4859-93b7-f1113d80dc18)
+
+By employing the exponential map, the algorithm effectively projects the optimization steps onto the manifold, guaranteeing that the resulting points lie within the desired spherical structure. This approach ensures that the algorithm operates in a manner that is consistent with the constraints imposed by the manifold, enabling it to explore the relevant space of filter coefficients effectively.
+
+The figure provides a visual representation of how the algorithm progresses on the manifold surface, demonstrating how the exponential map assists in maintaining the search within the manifold's boundaries. By leveraging this methodology, the proposed algorithm offers a robust and efficient solution for optimizing filter coefficients within the specified manifold structure.
+
+
