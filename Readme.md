@@ -1,7 +1,7 @@
 
 # Adaptive filter with Riemannian manifold constraint  
 
-This is my interpretation of the paper [Adaptive filter with Riemannian manifold constraint  ]([https://duckduckgo.com](https://doi.org/10.1038/s41598-023-36127-y)).
+This is my interpretation of the paper [Adaptive filter with Riemannian manifold constraint  ](https://doi.org/10.1038/s41598-023-36127-y).
 # Intuition
 
 The paper introduces a novel approach to constrain the filter coefficients by placing them on an arbitrary manifold. To better understand this concept, imagine representing the filter coefficients as points on a sphere in the provided image. In this specific case, the filter consists of three coefficients, and each point on the sphere corresponds to a particular combination of these coefficients.
