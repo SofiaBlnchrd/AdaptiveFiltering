@@ -37,78 +37,39 @@ Import the nessesary libraries
 > import geomstats.visualization as visualization  
 > from geomstats.geometry.hypersphere import Hypersphere
 
-define the filter as a function with the following parameters D=desired signal, x=input signal, N=signal size, p =filter order
-> def filterMANIFOLD( Deseada,x, N, p,mu=0.08,rho=100.7,maifoldx='esfera',mostrar=False,retErrorSig=False):
+define the filter as a function with the following parameters D=desired signal, x=input signal, N=signal size, p =filter order.
 
- #define los datos
- AECG=Deseada                # d
- x=x.reshape(x.shape[0],1);  # Xref
- r_hat=np.ones((p,1))*0.2
- g_hat=np.ones((p,1))*0.2
- p_hat=0
- #------------------------------------------
- error=np.zeros(N);salida=np.zeros(N);h1=np.ones((N,p)); 
- #parametros
- 
- if maifoldx=='esfera':
-  SPHERE2 = Hypersphere(dim=p-1)
- else: 
-  SPHERE2 = Hyperboloid(dim=p-1, coords_type="extrinsic")
-
-
- points_in_manifold = SPHERE2.random_point(n_samples=1)
- h=points_in_manifold
- h=h.reshape(p,1)
-
- METRIC = SPHERE2.metric
- manifold=SPHERE2
- #mu=0.001;  delta=0.001; gamma=0.0001
- index=0
- for t in np.arange(N-p-1)+p:
-  index=index+1
-  #vector de entrada
-  entrada= x[t:t-p:-1]
-  #entrada= x[t-p+1:t+1]
-  #error
-  rr=h.T.dot(entrada)
-  salida[t]=rr[0,0]
-  error[t]=AECG[t]-salida[t]
-
-  #calcular el line search
-  # r_hat=r_hat*0.001+x[t-1]*x[t]
-  # g_hat=g_hat-r_hat*salida[t]
-  # #print('shapes:',r_hat.shape,x[t-p+1:t+1].shape)
-  # p_hat=x[t-p+1:t+1].reshape(5).T*AECG[t-p+1:t+1].reshape(5)*0.001
-  # #print('shapes:',r_hat.shape)
-  # #print('shapes:',AECG[t-p+1:t+1].shape,g_hat.shape,p_hat.shape)
-  # alfa=p_hat.T@AECG[t-p+1:t+1].reshape(5,1)
-  # alfa=alfa-g_hat.T@h
-  # #print('shapes:',alfa.shape)
-  # #print('shapes:',p_hat.shape,h.shape)
-  # alfa=alfa/(AECG[t-p+1:t+1].T@g_hat+1)
-  # alfa=alfa.squeeze()
-  # if alfa>0.1 or alfa<0:
-  #   alfa=0.001
-  #print(alfa)
-  
-  #h1[t]=h.T.copy()
-  #METODO normalized LMS with a variable regularization factor 
-  euclidean_grad =mu*entrada.reshape(p,1)*error[t]  #EL GRADIENTE
-  #rho=100.7
-  #print('error',error[t],' entrada',entrada,' mu',mu )
-  #print('euclidean_grad',euclidean_grad)
-  euclidean_grad=euclidean_grad.squeeze()
-  #print('euclidean_grad',euclidean_grad)
-  tangent_vec =manifold.to_tangent( vector=euclidean_grad, base_point=h.squeeze()) #CALCULA EL VECTOR EN EL PLANO TANGENTE
-  h = manifold.metric.exp(base_point=h.squeeze(), tangent_vec=rho*tangent_vec)
-  #h= h*0.999
-  #h1[t]=h.T
-  h=h.reshape((p,1))
-  #h=h.reshape((p,1))
- # show results
- if mostrar:
-  grafica1(error,AECG,N,salida)
- return error
+> def MANIFOLD_ant( D,x, N, p,mu=0.08):  
+>   
+>  #initialize  
+>  x=x.reshape(x.shape[0],1);  # Xref  
+>  np.random.seed(727); #replicate results  
+>  error=np.zeros(N);outputF=np.zeros(N) #zeroes error and output  
+>  manifold = Hypersphere(dim=p-1) #select hypersphere manifold constraint  
+>  h = manifold.random_uniform(n_samples=1) #for filter coeficients select randon point on the manifold  
+>  METRIC = manifold.metric  
+>   
+>  #begin method  
+>  index=0  
+>  for t in np.arange(N-p-1)+p:  
+>   index=index+1  
+>   #input vector  
+>   inputv= x[t-p+1:t+1]  
+>   #error  
+>   rr=h.T.dot(inputv)  
+>   outputF[t]=rr  
+>   error[t]=D[t]-outputF[t]  
+>   
+>   # LMS   
+>   euclidean_grad =mu*inputv.reshape(p,1)*error[t]  #grad  
+>   euclidean_grad=euclidean_grad.squeeze()  
+>   tangent_vec =manifold.to_tangent( vector=euclidean_grad, base_point=h.squeeze()) #tangent vector  
+>   h = manifold.metric.exp(base_point=h.squeeze(), tangent_vec=tangent_vec) #exponential map  
+>   
+>   h=h.reshape((p,1))  
+>   
+>  r=range(N); #range of the signal  
+>  return D[r],outputF[r]  
 
 define a test suite using the Mackey-Glass series and LMS from padasip library  
 
