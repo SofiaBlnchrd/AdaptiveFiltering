@@ -32,9 +32,11 @@ Initialize filter and import library
 > 
 > import matplotlib.pylab as plt
 > 
-> import geomstats.backend as gs
-> import geomstats.visualization as visualization
+> import geomstats.backend as gs  
+> import geomstats.visualization as visualization  
 > from geomstats.geometry.hypersphere import Hypersphere
+> 
+> 
 > 
 > from geomstats.geometry.hypersphere import Hypersphere
 > from geomstats.geometry.hyperbolic import Hyperbolic
