@@ -114,5 +114,7 @@ define a test suite using the Mackey-Glass series and LMS from padasip library
 
 # That's all
 That's all Folks..
-I hope the code works for you, if there is any error in the implementation let me know at sofia.blanchard77@gmail.com
+I hope the code works for you, if there is any error in the implementation let me know at sofia.blanchard77@gmail.com  
+If this page was of any help, please cite the paper of my friends:  
+Mejia, J., Mederos, B., Gordillo, N. et al. Adaptive filter with Riemannian manifold constraint. Sci Rep 13, 9014 (2023). https://doi.org/10.1038/s41598-023-36127-y
 
