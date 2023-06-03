@@ -59,8 +59,7 @@ define the filter as a function with the following parameters D=desired signal, 
 >   rr=h.T.dot(inputv)  
 >   outputF[t]=rr  
 >   error[t]=D[t]-outputF[t]  
->   
->   # LMS   
+>   #LMS   
 >   euclidean_grad =mu*inputv.reshape(p,1)*error[t]  #grad  
 >   euclidean_grad=euclidean_grad.squeeze()  
 >   tangent_vec =manifold.to_tangent( vector=euclidean_grad, base_point=h.squeeze()) #tangent vector  
