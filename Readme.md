@@ -43,33 +43,31 @@ def MANIFOLD_ant( D,x, N, p,mu=0.08):
    #initialize  
    x=x.reshape(x.shape[0],1);  # Xref  
    np.random.seed(727); #replicate results  
-```   
->  error=np.zeros(N);outputF=np.zeros(N) #zeroes error and output  
->  manifold = Hypersphere(dim=p-1) #select hypersphere manifold constraint  
->  h = manifold.random_uniform(n_samples=1) #for filter coeficients select randon point on the manifold  
->  METRIC = manifold.metric  
->   
->  #begin method  
->  index=0  
->  for t in np.arange(N-p-1)+p:  
->   index=index+1  
->   #input vector  
->   inputv= x[t-p+1:t+1]  
->   #error  
->   rr=h.T.dot(inputv)  
->   outputF[t]=rr  
->   error[t]=D[t]-outputF[t]  
->   #LMS   
->   euclidean_grad =mu*inputv.reshape(p,1)*error[t]  #grad  
->   euclidean_grad=euclidean_grad.squeeze()  
->   tangent_vec =manifold.to_tangent( vector=euclidean_grad, base_point=h.squeeze()) #tangent vector  
->   h = manifold.metric.exp(base_point=h.squeeze(), tangent_vec=tangent_vec) #exponential map  
->   
->   h=h.reshape((p,1))  
->   
->  r=range(N); #range of the signal  
->  return D[r],outputF[r]  
-
+   error=np.zeros(N);outputF=np.zeros(N) #zeroes error and output  
+   manifold = Hypersphere(dim=p-1) #select hypersphere manifold constraint  
+   h = manifold.random_uniform(n_samples=1) #for filter coeficients select randon point on the manifold  
+   METRIC = manifold.metric  
+    
+   #begin method  
+   index=0  
+   for t in np.arange(N-p-1)+p:  
+    index=index+1  
+    #input vector  
+    inputv= x[t-p+1:t+1]  
+    #error  
+    rr=h.T.dot(inputv)  
+    outputF[t]=rr  
+    error[t]=D[t]-outputF[t]  
+    #LMS   
+    euclidean_grad =mu*inputv.reshape(p,1)*error[t]  #grad  
+    euclidean_grad=euclidean_grad.squeeze()  
+    tangent_vec =manifold.to_tangent( vector=euclidean_grad, base_point=h.squeeze()) #tangent vector  
+    h = manifold.metric.exp(base_point=h.squeeze(), tangent_vec=tangent_vec) #exponential map  
+    h=h.reshape((p,1))  
+    
+   r=range(N); #range of the signal  
+   return D[r],outputF[r]  
+``` 
 define a test suite using the Mackey-Glass series and LMS from padasip library  
 
 # That's all
