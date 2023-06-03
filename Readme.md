@@ -110,5 +110,9 @@ define the filter as a function with the following parameters D=desired signal, 
   grafica1(error,AECG,N,salida)
  return error
 
-define a test suite using the Mackey-Glass series and LMS from padasip library
+define a test suite using the Mackey-Glass series and LMS from padasip library  
+
+# That's all
+That's all Folks..
+I hope the code works for you, if there is any error in the implementation let me know at sofia.blanchard77@gmail.com
 
