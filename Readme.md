@@ -1,5 +1,6 @@
 
-**Intuition**.
+# Intuition
+
 The paper introduces a novel approach to constrain the filter coefficients by placing them on an arbitrary manifold. To better understand this concept, imagine representing the filter coefficients as points on a sphere in the provided image. In this specific case, the filter consists of three coefficients, and each point on the sphere corresponds to a particular combination of these coefficients.
 
 ![pointM](https://github.com/SofiaBlnchrd/AdaptiveFiltering/assets/135394093/fc472fc2-0cdf-48d0-9e22-5ccf56672013)
@@ -18,5 +19,18 @@ By employing the exponential map, the algorithm effectively projects the optimiz
 The figure provides a visual representation of how the algorithm progresses on the manifold surface, demonstrating how the exponential map assists in maintaining the search within the manifold's boundaries. By leveraging this methodology, the proposed algorithm offers a robust and efficient solution for optimizing filter coefficients within the specified manifold structure.
 
 # Python implementation
-install the geomstats library
+
+Install the geomstats library
+
 > !pip install geomstats
+
+Initialize filter and import library
+
+> from numpy.random.mtrand import gamma
+> import numpy as np
+> import matplotlib.pylab as plt
+> import geomstats.backend as gs
+> import geomstats.visualization as visualization
+> from geomstats.geometry.hypersphere import Hypersphere
+> from geomstats.geometry.hyperbolic import Hyperbolic
+> from geomstats.geometry.hyperboloid import Hyperboloid
