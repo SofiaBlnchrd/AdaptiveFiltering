@@ -17,4 +17,6 @@ By employing the exponential map, the algorithm effectively projects the optimiz
 
 The figure provides a visual representation of how the algorithm progresses on the manifold surface, demonstrating how the exponential map assists in maintaining the search within the manifold's boundaries. By leveraging this methodology, the proposed algorithm offers a robust and efficient solution for optimizing filter coefficients within the specified manifold structure.
 
-
+# Python implementation
+install the geomstats library
+> !pip install geomstats
