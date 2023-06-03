@@ -68,7 +68,9 @@ def MANIFOLD_ant( D,x, N, p,mu=0.08):
    r=range(N); #range of the signal  
    return D[r],outputF[r]  
 ``` 
-define a test suite using the Mackey-Glass series and LMS from padasip library  
+
+# Test suite
+I define a test suite using the Mackey-Glass series and compare results with the LMS from padasip library  
 
 # That's all
 That's all Folks..
