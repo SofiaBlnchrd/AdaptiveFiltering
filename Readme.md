@@ -38,12 +38,12 @@ Import the nessesary libraries
 > from geomstats.geometry.hypersphere import Hypersphere
 
 define the filter as a function with the following parameters D=desired signal, x=input signal, N=signal size, p =filter order.
-
-> def MANIFOLD_ant( D,x, N, p,mu=0.08):  
->   
->  #initialize  
->  x=x.reshape(x.shape[0],1);  # Xref  
->  np.random.seed(727); #replicate results  
+```
+def MANIFOLD_ant( D,x, N, p,mu=0.08):  
+   #initialize  
+   x=x.reshape(x.shape[0],1);  # Xref  
+   np.random.seed(727); #replicate results  
+```   
 >  error=np.zeros(N);outputF=np.zeros(N) #zeroes error and output  
 >  manifold = Hypersphere(dim=p-1) #select hypersphere manifold constraint  
 >  h = manifold.random_uniform(n_samples=1) #for filter coeficients select randon point on the manifold  
