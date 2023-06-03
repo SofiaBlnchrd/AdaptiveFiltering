@@ -27,8 +27,11 @@ Install the geomstats library
 Initialize filter and import library
 
 > from numpy.random.mtrand import gamma
+> 
 > import numpy as np
+> 
 > import matplotlib.pylab as plt
+> 
 > import geomstats.backend as gs
 > import geomstats.visualization as visualization
 > from geomstats.geometry.hypersphere import Hypersphere
