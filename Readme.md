@@ -105,6 +105,9 @@ plt.ylim(0.1,1.5)
 plt.legend()   
 plt.show()  
 ``` 
+the result  
+
+![resMan](https://github.com/SofiaBlnchrd/AdaptiveFiltering/assets/135394093/0474948f-059d-48af-ba1d-84ced40720a5)
 
 
 # That's all
