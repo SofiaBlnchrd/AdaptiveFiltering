@@ -70,7 +70,42 @@ def MANIFOLD_ant( D,x, N, p,mu=0.08):
 ``` 
 
 # Test suite
-I define a test suite using the Mackey-Glass series and compare results with the LMS from padasip library  
+I define a test suite using the Mackey-Glass series 
+``` 
+import numpy as np  
+import matplotlib.pylab as plt  
+
+np.random.seed(65);  
+plt.style.use('classic');   
+#simulate series  
+def CreatesMG(N):  
+ x=np.zeros(N)  
+ x[0:30]=np.random.rand(30)  
+ for i in range(30,N):  
+  x[i]=x[i-1]+0.2*x[i-30]/(1+x[i-30]**10)-0.1*x[i-1]  
+
+ xForw=x[50:-1]  
+ xret=x[48:-3]  
+ r=range(0,50)  
+ return xForw,xret  
+
+
+
+a,r=CreatesMG(1500)  
+
+
+Signal,estimate=MANIFOLD_ant( D=a, x=r, N=len(a)-100, p=3,mu=0.69)  
+
+plt.figure(figsize=(14,4))  
+X=np.arange(0,Signal.shape[0])  
+plt.plot(X,Signal,'r',label='signal')  
+plt.plot(X,estimate,'b--',label='manifold filter')   
+plt.xlim(900,1300)  
+plt.ylim(0.1,1.5)  
+plt.legend()   
+plt.show()  
+``` 
+
 
 # That's all
 That's all Folks..
