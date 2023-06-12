@@ -112,7 +112,7 @@ the result
 
 # That's all
 That's all Folks..
-I hope the code works for you, if there is any error in the implementation let me know at sofia.blanchard77@gmail.com  
+I hope the code works for you. 
 If this page was of any help, please cite the paper of my friends: 
 
 
